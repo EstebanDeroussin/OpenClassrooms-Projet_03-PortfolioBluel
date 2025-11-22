@@ -1,0 +1,13 @@
+{
+	"indentRainbow.colors": [
+		"rgba(138, 43, 226, 0.2)",
+		"rgba(135, 206, 250, 0.2)",
+		"rgba(50, 205, 50, 0.2)",
+		"rgba(255, 215, 0, 0.2)",
+		"rgba(255, 165, 0, 0.2)",
+		"rgba(255, 20, 147, 0.2)"
+	],
+	"indentRainbow.indicatorStyle": "light",
+	"indentRainbow.excludedLanguages": [],
+	"indentRainbow.updateDelay": 100
+}
