@@ -20,7 +20,7 @@
 	<body>
 		<div class="main-container">
 			<header>
-				<div class="bandeau">
+				<div class="bandeau active">
 					<i class="ri-edit-box-line"></i>
 					<p>Mode édition</p>
 				</div>
@@ -78,7 +78,10 @@
 					</article>
 				</section>
 				<section id="portfolio">
-					<h2>Mes Projets</h2>
+					<div class="edit-works">
+						<h2>Mes Projets</h2>
+                        <a href=""><i class="ri-edit-box-fill"></i>modifier</a>
+					</div>
 					<div class="filters"></div>
 					<div class="gallery"></div>
 				</section>
@@ -109,6 +112,10 @@
 					</ul>
 				</nav>
 			</footer>
+            <section id="overlay">
+                <div class="delete-work"></div>
+                <div class="add-work"></div>
+            </section>
 			<script type="module" src="/pages/main.js"></script>
 		</div>
 	</body>

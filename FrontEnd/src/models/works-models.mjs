@@ -53,7 +53,7 @@ export async function fetchCategories() {
 
 export function filterWorks(works, categoryId) {
 	if (categoryId === 0) return works;
-	return works.filter((work) => {
-		return work.category.id === categoryId;
-	});
+    return works.filter((work) => {
+        return work.category.id === categoryId
+    });
 }
