@@ -80,7 +80,9 @@
 				<section id="portfolio">
 					<div class="edit-works">
 						<h2>Mes Projets</h2>
-						<a href=""><i class="ri-edit-box-fill"></i>modifier</a>
+						<a class="edit-btn" href=""
+							><i class="ri-edit-box-fill"></i>modifier</a
+						>
 					</div>
 					<div class="filters"></div>
 					<div class="gallery"></div>
@@ -114,7 +116,8 @@
 			</footer>
 			<section id="overlay">
 				<div class="overlay-container">
-					<i class="ri-close-line"></i>
+                    <i class="back-modal ri-arrow-left-line"></i>
+					<i class="close-modal ri-close-line"></i>
 					<div class="delete-work">
 						<p>Galerie Photos</p>
 						<div class="works-container">
@@ -129,6 +132,69 @@
 						<div class="add-work">
 							<button>Ajouter une photo</button>
 						</div>
+					</div>
+					<div class="add-work-modal">
+						<div class="add-work-header">
+							<h3>Ajout photo</h3>
+						</div>
+						<form id="add-work-form" class="add-work-form">
+							<div class="upload-section">
+								<div class="upload-zone" id="upload-zone">
+									<i class="ri-image-line upload-icon"></i>
+									<label for="photo-input" class="upload-btn">
+										+ Ajouter photo
+									</label>
+									<input
+										type="file"
+										id="photo-input"
+										name="image"
+										accept="image/jpeg,image/png"
+										style="display: none"
+									/>
+									<p class="upload-info">
+										jpg, png : 4mo max
+									</p>
+									<img
+										id="preview-image"
+										class="preview-image"
+										style="display: none"
+										alt="Aperçu"
+									/>
+								</div>
+							</div>
+							<div class="form-fields">
+								<div class="form-field">
+									<label for="work-title">Titre</label>
+									<input
+										type="text"
+										id="work-title"
+										name="title"
+										required
+									/>
+								</div>
+								<div class="form-field">
+									<label for="work-category">Catégorie</label>
+									<select
+										id="work-category"
+										name="category"
+										required
+									>
+										<option value="">
+											Sélectionner une catégorie
+										</option>
+									</select>
+								</div>
+							</div>
+							<div class="form-actions">
+								<button
+									type="submit"
+									class="submit-btn"
+									id="submit-work-btn"
+								>
+									Valider
+								</button>
+							</div>
+						</form>
 					</div>
 				</div>
 			</section>

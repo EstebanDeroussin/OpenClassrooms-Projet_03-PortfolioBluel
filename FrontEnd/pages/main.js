@@ -1,4 +1,5 @@
 import { isUserLoggedIn } from "../src/controllers/auth-controller.mjs";
+import { initModal } from "../src/controllers/modal-controller.mjs";
 import {
 	initCategories,
 	initFilterWorks,
@@ -13,4 +14,6 @@ await initCategories();
 initFilterWorks();
 
 isUserLoggedIn()
+
+initModal()
 
