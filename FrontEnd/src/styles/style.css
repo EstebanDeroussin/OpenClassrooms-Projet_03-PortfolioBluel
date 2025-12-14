@@ -224,6 +224,14 @@ button {
 	transition: all 0.3s ease;
 }
 
+.login-btn {
+	display: none;
+}
+
+.login-btn.active {
+	display: flex;
+}
+
 .logout {
 	display: none;
 }
@@ -360,14 +368,14 @@ button {
 }
 
 #portfolio .edit-works {
-	display: none;
+	display: flex;
 	align-items: center;
 	justify-content: center;
 	gap: 1rem;
 	margin-bottom: 2rem;
 
 	&.active {
-		display: flex;
+		display: none;
 	}
 
 	a {
@@ -385,6 +393,22 @@ button {
 		i {
 			font-size: 25px;
 		}
+	}
+
+    .my-project {
+        display: none;
+    }
+
+    .my-project.active {
+        display: flex;
+    }
+
+	.edit-btn {
+		display: none;
+	}
+
+	.edit-btn.active {
+		display: flex;
 	}
 }
 
@@ -509,19 +533,19 @@ footer nav ul {
 
 	.back-modal {
 		position: absolute;
-        display: none;
+		display: none;
 		top: 24px;
 		left: 24px;
 		font-size: 24px;
 		cursor: pointer;
 
-        &.active {
-            display: block;
-        }
+		&.active {
+			display: block;
+		}
 
-        &:hover {
-            color: var(--color-title);
-        }
+		&:hover {
+			color: var(--color-title);
+		}
 	}
 
 	.close-modal {
@@ -593,6 +617,11 @@ footer nav ul {
 
 				&:hover {
 					background-color: red;
+				}
+
+				.trash-img {
+					width: 15px;
+					height: 15px;
 				}
 			}
 		}
@@ -761,8 +790,8 @@ footer nav ul {
 
 		.form-actions {
 			display: flex;
-            flex: 1;
-            align-items: flex-end;
+			flex: 1;
+			align-items: flex-end;
 			justify-content: center;
 			border-top: 1px solid var(--color-primary);
 		}
