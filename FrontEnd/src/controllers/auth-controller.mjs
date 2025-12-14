@@ -15,14 +15,24 @@ export async function initAuth() {
 		// Cacher l'erreur précédente
 		errorDiv.classList.remove("active");
 
-		const result = await fetchAuth(email, password);
+		// const result = await fetchAuth(email, password);
 
-		if (result.success) {
-			localStorage.setItem("token", result.data.token);
-			window.location.href = "/index.html";
-		} else {
-			errorDiv.classList.add("active");
-		}
+		// if (result.success) {
+		// 	localStorage.setItem("token", result.data.token);
+		// 	window.location.href = "/index.html";
+		// } else {
+		// 	errorDiv.classList.add("active");
+		// }
+
+		fetchAuth(email, password)
+			.then((result) => {
+				localStorage.setItem("token", result.data.token);
+				window.location.href = "/index.html";
+			})
+			.catch((error) => {
+				console.error(error.name);
+				errorDiv.classList.add("active");
+			});
 	});
 }
 

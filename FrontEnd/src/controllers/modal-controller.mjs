@@ -21,14 +21,24 @@ export async function initModal() {
 
 	const worksContainer = document.querySelector(".works-container");
 	worksContainer.addEventListener("click", async (e) => {
-		const trashBtn = e.target.closest(".trash");
-		const trash_id = trashBtn.dataset.id;
+		//const trashBtn = e.target
+		//const trash_id = trashBtn.dataset.id;
+		const work = e.target.closest(".work");
+		const id = work.dataset.id;
 
-		fetchWorkDelete(trash_id, token);
-		const resultat = await fetchWorks();
-		const works_deleted = resultat.data;
-		renderModalWorks(works_deleted);
-		renderWorks(works_deleted);
+		fetchWorkDelete(id, token)
+			.then(() => {
+				let index = works.findIndex((work) => work.id === id);
+				works.splice(index, 1);
+				work.remove();
+				renderWorks(works);
+			})
+			.catch((error) => console.log(error));
+
+		//fetchWorkDelete(work_id, token);
+		//const resultat = await fetchWorks();
+		//const works_deleted = resultat.data;
+		//renderModalWorks(works_deleted);
 	});
 
 	const findCategorie = await fetchCategories();
@@ -63,8 +73,8 @@ export async function initModal() {
 			reader.onload = (event) => {
 				// Afficher l'image preview
 				previewImage.src = event.target.result;
-                previewImage.style.display = "block";
-                previewImage.style.width = "200px"
+				previewImage.style.display = "block";
+				previewImage.style.width = "200px";
 
 				// Masquer les éléments par défaut
 				uploadIcon.style.display = "none";
