@@ -39,6 +39,7 @@ export function renderModalWorks(works) {
 	modal_works.innerHTML = "";
 	works.forEach((work) => {
 		const work_element = document.createElement("div");
+		work_element.dataset.id = work.id;
 		work_element.classList.add("work");
 
 		const img_element = document.createElement("img");
@@ -46,8 +47,13 @@ export function renderModalWorks(works) {
 
 		const trash_element = document.createElement("div");
 		trash_element.classList.add("trash");
+
+        const trash_img = document.createElement("img");
+        trash_img.classList.add("trash-img")
+		trash_img.src = "./assets/images/trash.png";
 		trash_element.dataset.id = work.id;
 
+		trash_element.appendChild(trash_img);
 		modal_works.appendChild(work_element);
 		work_element.appendChild(img_element);
 		work_element.appendChild(trash_element);
