@@ -2,30 +2,25 @@ import { WORKS_URL } from "./api-utils.mjs";
 
 // Logique spécifique à la modale (si nécessaire)
 export async function fetchWorkDelete(id, token) {
-	const url = `http://localhost:5678/api/works/${id}`;
+	const url = `${WORKS_URL}/${id}`;
 
-	const options = {
+	const response = await fetch(url, {
 		method: "DELETE",
 		headers: {
 			"Content-Type": "application/json",
 			Authorization: `Bearer ${token}`,
 		},
-	};
+	});
 
-	try {
-		const response = await fetch(url, options);
-
-		if (response.ok) {
-			console.log(`L'objet avec l'ID ${id} a été supprimé avec succès.`);
-			return true;
-		} else {
-			throw new Error(
-				`Échec de la suppression : ${response.status} ${response.statusText}`
-			);
-		}
-	} catch (error) {
-		console.error("Erreur lors de la suppression de l'objet");
+	if (!response.ok) {
+		let error = new Error(response.message);
+		error.name = `http error ${response.status} - ${response.statusText}`;
+		throw error;
 	}
+
+	return {
+		success: true,
+	};
 }
 
 export async function fetchAddWork(image, title, category, token) {

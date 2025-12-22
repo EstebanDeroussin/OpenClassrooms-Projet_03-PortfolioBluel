@@ -21,8 +21,6 @@ export async function initModal() {
 
 	const worksContainer = document.querySelector(".works-container");
 	worksContainer.addEventListener("click", async (e) => {
-		//const trashBtn = e.target
-		//const trash_id = trashBtn.dataset.id;
 		const work = e.target.closest(".work");
 		const id = work.dataset.id;
 
@@ -34,11 +32,6 @@ export async function initModal() {
 				renderWorks(works);
 			})
 			.catch((error) => console.log(error));
-
-		//fetchWorkDelete(work_id, token);
-		//const resultat = await fetchWorks();
-		//const works_deleted = resultat.data;
-		//renderModalWorks(works_deleted);
 	});
 
 	const findCategorie = await fetchCategories();
@@ -52,7 +45,9 @@ export async function initModal() {
 	const previewImage = document.getElementById("preview-image");
 	const uploadIcon = document.querySelector(".upload-icon");
 	const uploadBtn = document.querySelector(".upload-btn");
-	const uploadInfo = document.querySelector(".upload-info");
+    const uploadInfo = document.querySelector(".upload-info");
+    const errorSpan = document.getElementById("error")
+	const maxSize = 4 * 1024 * 1024;
 
 	// Fonction pour réinitialiser l'affichage de la zone d'upload
 	function resetUploadZone() {
@@ -65,9 +60,13 @@ export async function initModal() {
 
 	// Afficher l'image sélectionnée
 	fileInput.addEventListener("change", (e) => {
-		const file = e.target.files[0];
+        const file = e.target.files[0];
+        errorSpan.textContent = ""
 
-		if (file) {
+        if (file && file.size > maxSize) {
+            errorSpan.textContent = "L'image ne doit pas dépasser 4 Mo."
+            e.target.value = ""
+        } else {
 			const reader = new FileReader();
 
 			reader.onload = (event) => {
@@ -85,10 +84,8 @@ export async function initModal() {
 				console.error("Erreur lors de la lecture du fichier");
 			};
 
-			reader.readAsDataURL(file);
-		} else {
-			// Si aucun fichier, réinitialiser l'affichage
-			resetUploadZone();
+            reader.readAsDataURL(file)
+            resetUploadZone()
 		}
 	});
 
