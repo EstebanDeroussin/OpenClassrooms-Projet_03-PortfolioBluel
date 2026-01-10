@@ -40,7 +40,6 @@ export function renderModal() {
 	overlay_container.onclick = stopPropagation;
 }
 
-
 function stopPropagation(event) {
 	event.stopPropagation();
 }
