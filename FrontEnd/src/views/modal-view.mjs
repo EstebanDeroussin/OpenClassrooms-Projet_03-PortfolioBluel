@@ -31,8 +31,25 @@ export function renderModal() {
 		add_modal.classList.remove("active");
 		delete_modal.classList.add("active");
 		back_btn.classList.remove("active");
-	});
+    });
+
+    const overlay_container = document.querySelector(".overlay-container");
+	console.log(overlay_container);
+
+	overlay.onclick = closeModal;
+	overlay_container.onclick = stopPropagation;
 }
+
+
+function stopPropagation(event) {
+	event.stopPropagation();
+}
+
+function closeModal() {
+	console.log("toto");
+}
+
+
 
 export function renderModalWorks(works) {
 	const modal_works = document.querySelector(".works-container");
